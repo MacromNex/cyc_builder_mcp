@@ -1,0 +1,34 @@
+{
+  "_description": "Configuration for cyclic peptide seed preparation",
+  "_source": "Extracted from examples/use_case_1_seed_preparation.py",
+
+  "peptide_length": 5,
+  "top_k_matches": 3,
+  "output_dir": "./seeds",
+
+  "file_naming": {
+    "seed_prefix": "seed",
+    "receptor_prefix": "rec",
+    "extension": "_mono.pdb"
+  },
+
+  "master_search": {
+    "enabled": false,
+    "database_path": "",
+    "rmsd_cutoff": 2.0,
+    "sequence_identity_cutoff": 0.8
+  },
+
+  "rosetta_scoring": {
+    "enabled": false,
+    "relax_cycles": 3,
+    "score_function": "talaris2014"
+  },
+
+  "validation": {
+    "check_pdb_format": true,
+    "min_file_size": 100,
+    "require_receptor": true,
+    "require_motif": true
+  }
+}

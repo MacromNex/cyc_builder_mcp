@@ -1,0 +1,67 @@
+{
+  "_description": "Configuration for post-processing and ranking cyclic peptides",
+  "_source": "Extracted from examples/use_case_4_post_processing.py",
+
+  "processing": {
+    "top_k": 10,
+    "suffix": "cycb",
+    "num_processors": 4,
+    "cluster_similarity_threshold": 0.8,
+    "max_input_peptides": 1000
+  },
+
+  "scoring": {
+    "interface_weight": 1.0,
+    "clashing_weight": 0.5,
+    "hydrophobic_weight": 1.2,
+    "stability_weight": 0.3,
+    "druggability_weight": 0.8
+  },
+
+  "output": {
+    "create_summary": true,
+    "create_rankings": true,
+    "copy_structures": true,
+    "format": "json",
+    "include_scores_in_pdb": true,
+    "include_metadata": true
+  },
+
+  "filtering": {
+    "remove_duplicates": true,
+    "min_binding_score": -50.0,
+    "max_clashing_score": 5.0,
+    "min_druggability": 0.3,
+    "min_stability_score": -200.0,
+    "max_molecular_weight": 2000.0
+  },
+
+  "clustering": {
+    "enabled": true,
+    "method": "sequence_similarity",
+    "similarity_threshold": 0.8,
+    "max_cluster_size": 5,
+    "select_best_per_cluster": true
+  },
+
+  "refinement": {
+    "enabled": false,
+    "energy_minimization": false,
+    "solvation_refinement": false,
+    "loop_modeling": false
+  },
+
+  "validation": {
+    "check_structure_quality": true,
+    "validate_cyclization": true,
+    "check_steric_clashes": true,
+    "verify_binding_pocket": true
+  },
+
+  "convergence_analysis": {
+    "enabled": false,
+    "track_score_improvement": true,
+    "diversity_metrics": true,
+    "recommendation_threshold": 0.95
+  }
+}

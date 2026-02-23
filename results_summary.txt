@@ -1,0 +1,46 @@
+# Generated Files Summary
+
+## File Structure Generated:
+./final_results/cycb_peptide_rankings.txt
+./final_results/cycb_post_processing_summary.json
+./final_results/cycb_top_01_cyclic_peptide_2.pdb
+./final_results/cycb_top_02_cyclic_peptide_4.pdb
+./final_results/cycb_top_03_cyclic_peptide_6.pdb
+./final_results/cycb_top_04_cyclic_peptide_0.pdb
+./final_results/cycb_top_05_cyclic_peptide_1.pdb
+./final_results/cycb_top_06_cyclic_peptide_8.pdb
+./final_results/cycb_top_07_cyclic_peptide_7.pdb
+./final_results/cycb_top_08_cyclic_peptide_9.pdb
+./final_results/cycb_top_09_cyclic_peptide_5.pdb
+./final_results/cycb_top_10_cyclic_peptide_3.pdb
+./output/cyclic_peptide_0.pdb
+./output/cyclic_peptide_0_scores.txt
+./output/cyclic_peptide_1.pdb
+./output/cyclic_peptide_1_scores.txt
+./output/cyclic_peptide_2.pdb
+./output/cyclic_peptide_2_scores.txt
+./output/cyclic_peptide_3.pdb
+./output/cyclic_peptide_3_scores.txt
+./output/cyclic_peptide_4.pdb
+./output/cyclic_peptide_4_scores.txt
+./output/cyclic_peptide_5.pdb
+./output/cyclic_peptide_5_scores.txt
+./output/cyclic_peptide_6.pdb
+./output/cyclic_peptide_6_scores.txt
+./output/cyclic_peptide_7.pdb
+./output/cyclic_peptide_7_scores.txt
+./output/cyclic_peptide_8.pdb
+./output/cyclic_peptide_8_scores.txt
+./output/cyclic_peptide_9.pdb
+./output/cyclic_peptide_9_scores.txt
+./seeds/rec0_mono.pdb
+./seeds/rec1_mono.pdb
+./seeds/rec2_mono.pdb
+./seeds/seed0_mono.pdb
+./seeds/seed1_mono.pdb
+./seeds/seed2_mono.pdb
+
+## File Counts:
+- Seeds: $(find seeds/ -type f | wc -l) files
+- Generated peptides: $(find output/ -type f | wc -l) files
+- Final results: $(find final_results/ -type f | wc -l) files

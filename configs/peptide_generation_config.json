@@ -1,0 +1,53 @@
+{
+  "_description": "Configuration for cyclic peptide generation using MCTS",
+  "_source": "Extracted from examples/use_case_2_cyclic_peptide_generation.py",
+
+  "mcts": {
+    "levels": 5,
+    "num_simulations": 500,
+    "seed": 42,
+    "exploration_constant": 1.4,
+    "max_depth": 10
+  },
+
+  "output": {
+    "path": "./output",
+    "temp_path": "./tmp",
+    "top_k": 10,
+    "suffix": "cycb"
+  },
+
+  "processing": {
+    "num_processors": 4,
+    "residue_threshold": false,
+    "parallel_mcts": true,
+    "memory_limit_gb": 8
+  },
+
+  "file_naming": {
+    "peptide_prefix": "cyclic_peptide",
+    "score_suffix": "_scores.txt",
+    "extension": ".pdb"
+  },
+
+  "fragment_library": {
+    "enabled": false,
+    "library_path": "",
+    "fragment_length": 3,
+    "overlap_length": 1
+  },
+
+  "binding_pocket": {
+    "auto_detect": true,
+    "center_coordinates": [0.0, 0.0, 0.0],
+    "radius": 15.0,
+    "grid_resolution": 0.5
+  },
+
+  "scoring": {
+    "interface_weight": 1.0,
+    "clashing_weight": 2.0,
+    "hydrophobic_weight": 1.2,
+    "hydrogen_bond_weight": 1.5
+  }
+}

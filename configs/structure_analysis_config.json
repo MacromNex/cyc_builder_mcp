@@ -1,0 +1,59 @@
+{
+  "_description": "Configuration for cyclic peptide structure analysis",
+  "_source": "Extracted from examples/use_case_3_structure_analysis.py",
+
+  "analysis": {
+    "include_hydrogen_bonds": true,
+    "include_electrostatics": true,
+    "include_sasa": true,
+    "include_shape_complementarity": true,
+    "include_flexibility": true,
+    "include_stability": true
+  },
+
+  "scoring": {
+    "interface_weight": 1.0,
+    "clashing_weight": 0.5,
+    "hydrophobic_weight": 1.2,
+    "hydrogen_bond_weight": 1.5,
+    "electrostatic_weight": 0.8
+  },
+
+  "output": {
+    "format": "json",
+    "include_metadata": true,
+    "precision": 2,
+    "save_intermediate": false
+  },
+
+  "binding_analysis": {
+    "contact_distance_cutoff": 4.0,
+    "hydrogen_bond_distance_cutoff": 3.5,
+    "hydrogen_bond_angle_cutoff": 30.0,
+    "hydrophobic_contact_cutoff": 5.0
+  },
+
+  "peptide_properties": {
+    "calculate_gyration_radius": true,
+    "calculate_asphericity": true,
+    "calculate_flexibility": true,
+    "calculate_druggability": true,
+    "calculate_permeability": true,
+    "calculate_toxicity": true
+  },
+
+  "batch_processing": {
+    "max_concurrent": 4,
+    "save_individual_results": true,
+    "create_summary": true,
+    "rank_by_binding_score": true
+  },
+
+  "thresholds": {
+    "strong_binding_score": -30.0,
+    "moderate_binding_score": -15.0,
+    "high_druggability": 0.6,
+    "medium_druggability": 0.4,
+    "low_clashing_threshold": 2.0
+  }
+}

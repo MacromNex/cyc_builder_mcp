@@ -1,0 +1,65 @@
+{
+  "_description": "Default configuration for all CYC_BUILDER MCP tools",
+  "_version": "1.0.0",
+
+  "global": {
+    "working_directory": "./",
+    "temp_directory": "./tmp",
+    "log_level": "INFO",
+    "max_memory_gb": 8,
+    "default_timeout_seconds": 300
+  },
+
+  "file_paths": {
+    "models_dir": "models",
+    "data_dir": "examples/data",
+    "output_dir": "results",
+    "config_dir": "configs"
+  },
+
+  "computational": {
+    "num_processors": 4,
+    "use_gpu": false,
+    "parallel_processing": true,
+    "batch_size": 10
+  },
+
+  "output_formats": {
+    "structure_format": "pdb",
+    "data_format": "json",
+    "precision": 2,
+    "include_metadata": true,
+    "compress_outputs": false
+  },
+
+  "validation": {
+    "strict_mode": false,
+    "validate_inputs": true,
+    "check_dependencies": true,
+    "verify_outputs": true
+  },
+
+  "scoring_defaults": {
+    "interface_weight": 1.0,
+    "clashing_weight": 0.5,
+    "hydrophobic_weight": 1.2,
+    "hydrogen_bond_weight": 1.5,
+    "electrostatic_weight": 0.8,
+    "stability_weight": 0.3
+  },
+
+  "peptide_defaults": {
+    "min_length": 3,
+    "max_length": 20,
+    "default_length": 8,
+    "require_cyclization": true,
+    "allowed_amino_acids": "ACDEFGHIKLMNPQRSTVWY"
+  },
+
+  "mcp_integration": {
+    "tool_timeout": 60,
+    "max_concurrent_calls": 5,
+    "return_intermediate_results": false,
+    "error_handling": "graceful"
+  }
+}

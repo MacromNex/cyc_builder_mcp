@@ -1,0 +1,43 @@
+# Add other general configurations here/
+general:
+  output_path:  ../demo_cycb/demo_output
+  tmp:  ../demo_cycb/demo_output_tmp # "<output_path>"
+  levels:  5 #"<levels>"
+  num_sims: 500 #"<num_sims>"
+  seed: ../demo_cycb/seed.pdb #"<seed>" optional
+  receptor: ../demo_cycb/rec.pdb #"<receptor>" required
+  ligand:  ../demo_cycb/lig.pdb #"<ligand>" refernce ligand, optional
+  res_thr: False #"<res_thr>"
+  topk: 1000
+  nproc: 10
+  suffix: cycb
+
+MCTS_scalars:
+  SCALAR: 0.17677669529663687 #1/(4*math.sqrt(2.0))
+  NUM_TURNS: 5
+
+Score_params:
+  W_i: 12
+  W_c: 10
+  W_cl: 9
+  W_hb: 10
+  W_hy: 2
+  W_pro: 2
+  W_ra: 5
+  W_sa: 6
+
+Grid_score_params:
+  R_CUBE: 12.0
+  Gridsize: 0.8
+  REPWEIGHT: 0.17
+  SOLWEIGHT: 0.72
+  ELEWEIGHT: 1.4
+
+hydra: 
+  run:
+    dir: ./         
+  output_subdir: ./outputs/ 
+   
+  
+
+
