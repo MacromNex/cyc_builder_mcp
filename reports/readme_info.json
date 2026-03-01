@@ -1,0 +1,228 @@
+{
+  "project_name": "cyc-builder-tools",
+  "description": "Comprehensive MCP tools for cyclic peptide computational analysis and design using the CYC_BUILDER framework",
+  "version": "1.0",
+  "creation_date": "2025-12-31",
+  "tools": [
+    {
+      "name": "prepare_seeds",
+      "type": "sync",
+      "description": "Extract binding motifs to create seed peptides for cyclic peptide design",
+      "example_prompt": "Prepare seed peptides using @examples/data/structures/rec.pdb as receptor and @examples/data/structures/motif.pdb as motif",
+      "estimated_runtime": "~1 second"
+    },
+    {
+      "name": "analyze_structure",
+      "type": "sync",
+      "description": "Analyze peptide-receptor binding and calculate comprehensive scores",
+      "example_prompt": "Analyze the structure @examples/data/structures/seed.pdb against receptor @examples/data/structures/rec.pdb",
+      "estimated_runtime": "~1 second"
+    },
+    {
+      "name": "post_process_peptides",
+      "type": "sync",
+      "description": "Filter, cluster, and rank peptide candidates",
+      "example_prompt": "Process all peptide structures in @generated_peptides/ directory and rank the top 10 candidates",
+      "estimated_runtime": "~1 second"
+    },
+    {
+      "name": "submit_peptide_generation",
+      "type": "submit",
+      "description": "Generate cyclic peptides using MCTS algorithm (long-running)",
+      "example_prompt": "Submit a peptide generation job using seed @examples/data/structures/seed.pdb with 5 MCTS levels and 500 simulations",
+      "estimated_runtime": ">10 minutes (real implementation)"
+    },
+    {
+      "name": "submit_batch_seed_preparation",
+      "type": "submit",
+      "description": "Process multiple receptor-motif pairs in batch",
+      "example_prompt": "Submit batch seed preparation for multiple target-motif pairs",
+      "estimated_runtime": "varies"
+    },
+    {
+      "name": "submit_full_design_pipeline",
+      "type": "submit",
+      "description": "Complete CYC_BUILDER workflow from receptor to final candidates",
+      "example_prompt": "Run complete cyclic peptide design pipeline starting from @examples/data/structures/rec.pdb",
+      "estimated_runtime": ">30 minutes (real implementation)"
+    },
+    {
+      "name": "get_job_status",
+      "type": "utility",
+      "description": "Check job progress and status",
+      "example_prompt": "Check the status of job abc12345"
+    },
+    {
+      "name": "get_job_result",
+      "type": "utility",
+      "description": "Get results when job completed",
+      "example_prompt": "Get results for job abc12345"
+    },
+    {
+      "name": "get_job_log",
+      "type": "utility",
+      "description": "View job execution logs",
+      "example_prompt": "Show execution logs for job abc12345"
+    },
+    {
+      "name": "cancel_job",
+      "type": "utility",
+      "description": "Cancel running job",
+      "example_prompt": "Cancel job abc12345"
+    },
+    {
+      "name": "list_jobs",
+      "type": "utility",
+      "description": "List all jobs with status filtering",
+      "example_prompt": "List all submitted jobs"
+    },
+    {
+      "name": "load_config",
+      "type": "utility",
+      "description": "Load configuration files",
+      "example_prompt": "Load configuration for peptide generation"
+    },
+    {
+      "name": "list_example_files",
+      "type": "utility",
+      "description": "List available test data",
+      "example_prompt": "What example files are available?"
+    }
+  ],
+  "scripts": [
+    {
+      "name": "seed_preparation.py",
+      "description": "Extract binding motifs to create seed peptides for design",
+      "example_command": "python scripts/seed_preparation.py --receptor examples/data/structures/rec.pdb --motif examples/data/structures/motif.pdb",
+      "source_use_case": "UC-001",
+      "independent": true
+    },
+    {
+      "name": "peptide_generation.py",
+      "description": "Generate cyclic peptides using MCTS algorithm",
+      "example_command": "python scripts/peptide_generation.py --seed examples/data/structures/seed.pdb --receptor examples/data/structures/rec.pdb",
+      "source_use_case": "UC-002",
+      "independent": true
+    },
+    {
+      "name": "structure_analysis.py",
+      "description": "Analyze peptide structures and calculate binding scores",
+      "example_command": "python scripts/structure_analysis.py --peptide examples/data/structures/seed.pdb --receptor examples/data/structures/rec.pdb",
+      "source_use_case": "UC-003",
+      "independent": true
+    },
+    {
+      "name": "post_processing.py",
+      "description": "Post-process, filter, and rank generated peptides",
+      "example_command": "python scripts/post_processing.py --input ./generated_peptides --receptor examples/data/structures/rec.pdb",
+      "source_use_case": "UC-004",
+      "independent": true
+    }
+  ],
+  "demo_data": [
+    {
+      "file": "structures/rec.pdb",
+      "description": "Example receptor structure (ALK1)",
+      "used_by": ["prepare_seeds", "analyze_structure", "post_process_peptides"],
+      "size": "93151 bytes"
+    },
+    {
+      "file": "structures/motif.pdb",
+      "description": "Example binding motif structure",
+      "used_by": ["prepare_seeds"],
+      "size": "13619 bytes"
+    },
+    {
+      "file": "structures/seed.pdb",
+      "description": "Example seed peptide structure",
+      "used_by": ["peptide_generation", "analyze_structure"],
+      "size": "4618 bytes"
+    },
+    {
+      "file": "structures/ALK1.pdb",
+      "description": "Full ALK1 receptor structure",
+      "used_by": ["alternative receptor"],
+      "size": "93151 bytes"
+    },
+    {
+      "file": "configs/config.yaml",
+      "description": "Example MCTS configuration",
+      "used_by": ["script configuration"]
+    }
+  ],
+  "configs": [
+    {
+      "file": "seed_preparation_config.json",
+      "description": "Configuration for seed preparation",
+      "parameters": {"peptide_length": 5, "top_k_matches": 3, "file_naming": true, "validation": true}
+    },
+    {
+      "file": "peptide_generation_config.json",
+      "description": "Configuration for MCTS peptide generation",
+      "parameters": {"mcts_levels": 5, "num_simulations": 500, "top_k": 10, "scoring_weights": "balanced"}
+    },
+    {
+      "file": "structure_analysis_config.json",
+      "description": "Configuration for structure analysis",
+      "parameters": {"scoring_weights": "default", "analysis_options": "comprehensive", "output_format": "json"}
+    },
+    {
+      "file": "post_processing_config.json",
+      "description": "Configuration for post-processing",
+      "parameters": {"filtering_criteria": "binding_score", "clustering": true, "top_k": 10}
+    },
+    {
+      "file": "default_config.json",
+      "description": "Global default settings",
+      "parameters": {"computational_settings": "standard", "file_paths": "relative", "validation": "enabled"}
+    }
+  ],
+  "installation": {
+    "package_manager": "mamba (preferred) or conda",
+    "python_version": "3.11.14",
+    "environment_path": "./env",
+    "key_dependencies": ["rdkit=2025.09.4", "fastmcp=2.14.2", "biopython=1.86", "numpy=2.4.0"],
+    "installation_time": "~15 minutes",
+    "environment_size": "~2.5 GB"
+  },
+  "mcp_integration": {
+    "server_name": "cyc-builder-tools",
+    "server_path": "src/server.py",
+    "installation_methods": ["fastmcp install", "claude mcp add", "settings.json"],
+    "tested_clients": ["Claude Code", "Gemini CLI"],
+    "reference_syntax": "@examples/data/structures/file.pdb"
+  },
+  "workflow_examples": [
+    {
+      "name": "Quick Structure Analysis",
+      "description": "Analyze peptide binding properties",
+      "tools_used": ["analyze_structure"],
+      "estimated_time": "<1 minute"
+    },
+    {
+      "name": "Seed Preparation Campaign",
+      "description": "Generate seed peptides for design",
+      "tools_used": ["prepare_seeds"],
+      "estimated_time": "<1 minute"
+    },
+    {
+      "name": "Complete Design Pipeline",
+      "description": "End-to-end cyclic peptide design",
+      "tools_used": ["submit_full_design_pipeline", "get_job_status", "get_job_result"],
+      "estimated_time": ">30 minutes (real implementation)"
+    },
+    {
+      "name": "Batch Virtual Screening",
+      "description": "Process multiple targets simultaneously",
+      "tools_used": ["submit_batch_seed_preparation", "list_jobs"],
+      "estimated_time": "varies"
+    }
+  ],
+  "testing": {
+    "script_tests": "all 4 scripts tested and verified",
+    "mcp_tests": "server import successful",
+    "example_data": "all referenced files verified to exist",
+    "integration_tests": "step 7 integration tests passed 6/6",
+    "last_validated": "2025-12-31"
+  }
+}

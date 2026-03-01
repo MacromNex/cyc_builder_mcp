@@ -1,0 +1,45 @@
+{
+  "test_date": "2025-12-31T19:34:28.771482",
+  "server_path": "/home/xux/Desktop/CycPepMCP/CycPepMCP/tool-mcps/cyc_builder_mcp/src/server.py",
+  "project_root": "/home/xux/Desktop/CycPepMCP/CycPepMCP/tool-mcps/cyc_builder_mcp",
+  "tests": {
+    "server_startup": {
+      "status": "passed",
+      "output": "OK\n",
+      "error": ""
+    },
+    "tool_discovery": {
+      "status": "passed",
+      "tool_count": 13,
+      "output": "Found 13 tools\n  - get_job_status\n  - get_job_result\n  - get_job_log\n  - cancel_job\n  - list_jobs\n  - prepare_seeds\n  - analyze_structure\n  - post_process_peptides\n  - submit_peptide_generation\n  - submit_batch_seed_preparation\n  - submit_full_design_pipeline\n  - load_config\n  - list_example_files\n",
+      "error": ""
+    },
+    "example_files": {
+      "status": "passed",
+      "output": "Example files check: success\nFound 8 structure files\n",
+      "error": ""
+    },
+    "sync_tool_execution": {
+      "status": "passed",
+      "passed": 2,
+      "total": 2
+    },
+    "job_submission": {
+      "status": "passed",
+      "output": "Job submission result: submitted\nJob ID: bedf4223\n",
+      "error": ""
+    },
+    "job_management": {
+      "status": "passed",
+      "output": "List jobs result: success\nTotal jobs: 5\n",
+      "error": ""
+    }
+  },
+  "issues": [],
+  "summary": {
+    "total_tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "pass_rate": "100.0%"
+  }
+}
